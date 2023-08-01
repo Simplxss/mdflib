@@ -1,10 +1,23 @@
 # Copyright 2021 Ingemar Hedvall
 # SPDX-License-Identifier: MIT
 cmake_minimum_required(VERSION 3.20)
+set(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_SYSTEM_PROCESSOR x86_64)
+
+set(toolchainpath "C:/Program Files/NI-rt Tool chain/sysroots")
+set(CMAKE_SYSROOT ${toolchainpath}/core2-64-nilrt-linux)
+set(CMAKE_<LANG>_STANDARD_INCLUDE_DIRECTORIES ${toolchainpath}/core2-64-nilrtlinux/usr/include/c++/6.3.0 ${toolchainpath}/core2-64-nilrt-linux/usr/include/c++/6.3.0/x86_64-nilrtlinux)
+
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+
 project(mdflib
         VERSION 2.0
         DESCRIPTION "Interface against MDF 3/4 files"
         LANGUAGES CXX)
+
 
 option(MDF_BUILD_SHARED_LIB "Build dll/so library." ON)
 option(MDF_BUILD_DOC "Build documentation. Requires Doxygen and Release mode." OFF)

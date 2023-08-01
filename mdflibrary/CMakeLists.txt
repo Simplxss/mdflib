@@ -34,7 +34,6 @@ if (_MSC_VER)
 else()
     add_library(mdflibrary SHARED src/MdfExport.cpp)
     set_target_properties(mdflibrary PROPERTIES COMPILE_FLAGS "-fvisibility=hidden")
-    set_target_properties(mdflibrary PROPERTIES LINK_FLAGS "-Wl,-rpath,'$ORIGIN/lib'")
 
     # set_target_properties(mdflibrary PROPERTIES COMPILE_FLAGS "-m32" LINK_FLAGS "-m32")
 endif()
