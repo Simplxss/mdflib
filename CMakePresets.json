@@ -12,21 +12,6 @@
                 "CMAKE_BUILD_TYPE": "Release",
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}"
             }
-        },
-        {
-            "name": "msvc64",
-            "displayName": "Visual Studio Community 2022 Release - amd64",
-            "description": "Using compilers for Visual Studio 17 2022 (x64 architecture)",
-            "generator": "Visual Studio 17 2022",
-            "toolset": "host=x64",
-            "architecture": "x64",
-            "binaryDir": "${sourceDir}/build/${presetName}",
-            "cacheVariables": {
-                "CMAKE_TOOLCHAIN_FILE": "C:/vcpkg/scripts/buildsystems/vcpkg.cmake",
-                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
-                "CMAKE_C_COMPILER": "cl.exe",
-                "CMAKE_CXX_COMPILER": "cl.exe"
-            }
         }
     ],
     "buildPresets": [
@@ -35,12 +20,6 @@
             "description": "Build ninja-multi-vcpkg Configurations",
             "displayName": "Build ninja-multi-vcpkg",
             "configurePreset": "ninja-multi-vcpkg"
-        },
-        {
-            "name": "msvc64-debug",
-            "displayName": "Visual Studio Community 2022 Release - amd64 - Debug",
-            "configurePreset": "msvc64",
-            "configuration": "Debug"
         }
     ]
 }
