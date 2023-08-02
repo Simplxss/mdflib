@@ -17,16 +17,8 @@
     "buildPresets": [
         {
             "name": "ninja-multi-vcpkg",
-            "description": "",
-            "displayName": "",
-            "configurePreset": "ninja-multi-vcpkg"
-        }
-    ],
-    "testPresets": [
-        {
-            "name": "ninja-multi-vcpkg",
-            "description": "",
-            "displayName": "",
+            "description": "Build ninja-multi-vcpkg Configurations",
+            "displayName": "Build ninja-multi-vcpkg",
             "configurePreset": "ninja-multi-vcpkg"
         }
     ]
