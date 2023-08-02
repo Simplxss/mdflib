@@ -9,8 +9,8 @@
 #include <string>
 #include <thread>
 
-#include "util/LogConfig.h"
-#include "util/LogStream.h"
+#include "util/logconfig.h"
+#include "util/logstream.h"
 #include "util/TimeUtil.h"
 
 #include "mdf/isourceinformation.h"
