@@ -26,7 +26,7 @@ jobs:
           - os: windows-latest
             vcpkgCommitId: 0895a813036f4d189e2bdd1b62741744614347b4
             triplet: x64-windows
-            
+
           - os: ubuntu-latest
             vcpkgCommitId: 0895a813036f4d189e2bdd1b62741744614347b4
             triplet: x64-linux
@@ -37,35 +37,19 @@ jobs:
           - name: linux
             os: ubuntu-22.04
 
-#          - name: macos
-#            os: macos-12
-#            ninja_platform: mac
-#            cmake_env:
-#              CC: clang
-#              CXX: clang++
-#            pack: 1
-#
-#          - name: win64
-#            os: windows-latest
-#            ninja_platform: win
-#            msvc_arch: x64
-#            cmake_env:
-#              CMAKE_RC_FLAGS: "/C 1252"
-#              CC: clang
-#              CXX: clang++
-#            pack: 1
-#
-#          - name: win32
-#            os: windows-latest
-#            ninja_platform: win
-#            msvc_arch: x86
-#            cmake_env:
-#              CMAKE_RC_FLAGS: "/C 1252"
-#              CC: clang
-#              CXX: clang++
-#              CMAKE_C_FLAGS: -m32
-#              CMAKE_CXX_FLAGS: -m32
-#            pack: 1
+          - name: macos
+            os: macos-12
+            ninja_platform: mac
+
+          - name: win64
+            os: windows-latest
+            ninja_platform: win
+            msvc_arch: x64
+
+          - name: win32
+            os: windows-latest
+            ninja_platform: win
+            msvc_arch: x86
 
     steps:
       - name: Checkout repository
