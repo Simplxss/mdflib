@@ -13,5 +13,21 @@
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}"
             }
         }
+    ],
+    "buildPresets": [
+        {
+            "name": "ninja-multi-vcpkg",
+            "description": "",
+            "displayName": "",
+            "configurePreset": "ninja-multi-vcpkg"
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "ninja-multi-vcpkg",
+            "description": "",
+            "displayName": "",
+            "configurePreset": "ninja-multi-vcpkg"
+        }
     ]
 }
