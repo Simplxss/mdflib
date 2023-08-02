@@ -25,13 +25,15 @@ jobs:
         include:
           - os: windows-latest
             vcpkgCommitId: 0895a813036f4d189e2bdd1b62741744614347b4
-            VCPKG_DEFAULT_TRIPLET: x64-windows-static
+            triplet: x64-windows-static
 
           - os: ubuntu-latest
             vcpkgCommitId: 0895a813036f4d189e2bdd1b62741744614347b4
+            triplet: x64-linux
 
           - os: macos-latest
             vcpkgCommitId: 0895a813036f4d189e2bdd1b62741744614347b4
+            triplet: x64-osx
 
     steps:
       - name: Checkout repository
@@ -86,4 +88,6 @@ jobs:
 
           # This is the name of the CMakePresets.json's configuration to build the project.
           buildPreset: 'ninja-multi-vcpkg'
+
+          vcpkgTriplet: ${{ matrix.triplet }}
 ...
