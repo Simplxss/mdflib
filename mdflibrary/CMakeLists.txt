@@ -1,17 +1,10 @@
 # Copyright 2023 Simplxs
 # SPDX-License-Identifier: MIT
-cmake_minimum_required(VERSION 3.20)
-project(mdflibrary
-        VERSION 2.0
-        DESCRIPTION "Interface against MDF 3/4 files"
-        LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 17)
-
-if (_MSC_VER)
+if (MSVC)
     add_library(mdflibrary SHARED
+            ../include/mdflibrary/MdfExport.h src/MdfExport.cpp
             src/AssemblyInfo.cpp
-            include/mdflibrary/MdfExport.h src/MdfExport.cpp
             src/MdfAttachment.cpp src/MdfAttachment.h
             src/MdfChannel.cpp src/MdfChannel.h
             src/MdfChannelArray.cpp src/MdfChannelArray.h
@@ -30,18 +23,25 @@ if (_MSC_VER)
             src/MdfSourceInformation.cpp src/MdfSourceInformation.h
             src/Mdfwriter.cpp src/Mdfwriter.h
             )
-    set_target_properties(mdflibrary PROPERTIES COMMON_LANGUAGE_RUNTIME "")
+    set_target_properties(mdflibrary PROPERTIES COMPILE_FLAGS "/clr")
+#     set_target_properties(mdflibrary PROPERTIES COMMON_LANGUAGE_RUNTIME "")
 else()
-    add_library(mdflibrary SHARED src/MdfExport.cpp)
+    add_library(mdflibrary SHARED
+            ../include/mdflibrary/MdfExport.h src/MdfExport.cpp)
     set_target_properties(mdflibrary PROPERTIES COMPILE_FLAGS "-fvisibility=hidden")
+    set_target_properties(mdflibrary PROPERTIES LINK_FLAGS "-Wl,-rpath,'$ORIGIN'")
 
     # set_target_properties(mdflibrary PROPERTIES COMPILE_FLAGS "-m32" LINK_FLAGS "-m32")
 endif()
 
 target_link_libraries(mdflibrary PRIVATE mdf)
 
-set(MDF_PUBLIC_HEADERS include/mdflibrary/MdfExport.h)
-set_target_properties(mdflibrary PROPERTIES PUBLIC_HEADER "${MDF_PUBLIC_HEADERS}")
+target_include_directories(mdflibrary PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
+        )
+
+set(MDFLIBRARY_PUBLIC_HEADERS ../include/mdflibrary/MdfExport.h)
+set_target_properties(mdflibrary PROPERTIES PUBLIC_HEADER "${MDFLIBRARY_PUBLIC_HEADERS}")
 get_target_property(PH1 mdflibrary PUBLIC_HEADER)
 message(STATUS "MDFLibrary Target Includes: " "${PH1}")
 
