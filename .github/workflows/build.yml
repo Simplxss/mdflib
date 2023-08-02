@@ -78,7 +78,7 @@ jobs:
           # CMakePresets.json. Change if you need have CMakeLists.txt and CMakePresets.json
           # located elsewhere.
           cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
-
+ 
           # This is the name of the CMakePresets.json's configuration to use to generate
           # the project files. This configuration leverages the vcpkg.cmake toolchain file to
           # run vcpkg and install all dependencies specified in vcpkg.json.
@@ -89,8 +89,6 @@ jobs:
       - name: Upload build
         uses: actions/upload-artifact@v3
         with:
-          name: mdflib
-          path: |
-            build/mdflib/libmdf.a
-            build/mdflibrary/libmdflibrary.so
+          name: mdflibs
+          path: install/
 ...
