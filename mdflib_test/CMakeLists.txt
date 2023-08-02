@@ -11,21 +11,21 @@ project(TestMdf
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(test_mdf
-        testcrypto.cpp
-        testread.cpp testread.h
-        testwrite.cpp testwrite.h
-        testmdffile.cpp
-        testmetadata.cpp
-        testzlib.cpp testzlib.h
-        util/ilogger.h util/ilogger.cpp
-        util/logconfig.cpp util/logconfig.h
-        util/logconsole.cpp util/logconsole.h
-        util/logfile.cpp util/logfile.h
-        util/logging.cpp util/logging.h
-        util/logmessage.cpp util/logmessage.h
-        util/logstream.cpp util/logstream.h
-        util/StringUtil.cpp util/StringUtil.h
-        util/TimeUtil.cpp util/TimeUtil.h
+        src/testcrypto.cpp
+        src/testread.cpp src/testread.h
+        src/testwrite.cpp src/testwrite.h
+        src/testmdffile.cpp
+        src/testmetadata.cpp
+        src/testzlib.cpp src/testzlib.h
+        src/util/ilogger.h src/util/ilogger.cpp
+        src/util/logconfig.cpp src/util/logconfig.h
+        src/util/logconsole.cpp src/util/logconsole.h
+        src/util/logfile.cpp src/util/logfile.h
+        src/util/logging.cpp src/util/logging.h
+        src/util/logmessage.cpp src/util/logmessage.h
+        src/util/logstream.cpp src/util/logstream.h
+        src/util/StringUtil.cpp src/util/StringUtil.h
+        src/util/TimeUtil.cpp src/util/TimeUtil.h
         )
 
 target_include_directories(test_mdf PRIVATE ../include ../mdflib/src)

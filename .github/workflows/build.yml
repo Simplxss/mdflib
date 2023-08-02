@@ -41,8 +41,6 @@ jobs:
         
       # Install latest CMake.
       - uses: lukka/get-cmake@latest
-      # Or pin to a specific CMake version:
-      # lukka/get-cmake@v3.21.2
 
       # Setup vcpkg: ensures vcpkg is downloaded and built.
       # Since vcpkg.json is being used later on to install the packages
@@ -88,6 +86,11 @@ jobs:
 
           # This is the name of the CMakePresets.json's configuration to build the project.
           buildPreset: 'ninja-multi-vcpkg'
-
-          vcpkgTriplet: ${{ matrix.triplet }}
+      - name: Upload build
+        uses: actions/upload-artifact@v3
+        with:
+          name: mdflib
+          path: |
+            build/mdflib/libmdf.a
+            build/mdflibrary/libmdflibrary.so
 ...
