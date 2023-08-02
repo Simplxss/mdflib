@@ -26,30 +26,18 @@ jobs:
           - os: windows-latest
             vcpkgCommitId: 0895a813036f4d189e2bdd1b62741744614347b4
             triplet: x64-windows
+            VCPKG_DEFAULT_TRIPLET: x64-windows-static
+            msvc_arch: x64
 
           - os: ubuntu-latest
             vcpkgCommitId: 0895a813036f4d189e2bdd1b62741744614347b4
             triplet: x64-linux
+            VCPKG_DEFAULT_TRIPLET: x64-linux
+
           - os: macos-latest
             vcpkgCommitId: 0895a813036f4d189e2bdd1b62741744614347b4
             triplet: x64-osx
-        env:
-          - name: linux
-            os: ubuntu-22.04
-
-          - name: macos
-            os: macos-12
-            ninja_platform: mac
-
-          - name: win64
-            os: windows-latest
-            ninja_platform: win
-            msvc_arch: x64
-
-          - name: win32
-            os: windows-latest
-            ninja_platform: win
-            msvc_arch: x86
+            VCPKG_DEFAULT_TRIPLET: x64-osx
 
     steps:
       - name: Checkout repository
