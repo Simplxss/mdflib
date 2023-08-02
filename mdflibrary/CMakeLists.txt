@@ -3,8 +3,8 @@
 
 if (MSVC)
     add_library(mdflibrary SHARED
-            src/AssemblyInfo.cpp
             ../include/mdflibrary/MdfExport.h src/MdfExport.cpp
+            src/AssemblyInfo.cpp
             src/MdfAttachment.cpp src/MdfAttachment.h
             src/MdfChannel.cpp src/MdfChannel.h
             src/MdfChannelArray.cpp src/MdfChannelArray.h
@@ -23,9 +23,11 @@ if (MSVC)
             src/MdfSourceInformation.cpp src/MdfSourceInformation.h
             src/Mdfwriter.cpp src/Mdfwriter.h
             )
-    set_target_properties(mdflibrary PROPERTIES COMMON_LANGUAGE_RUNTIME "")
+    set_target_properties(mdflibrary PROPERTIES COMPILE_FLAGS "/clr")
+#     set_target_properties(mdflibrary PROPERTIES COMMON_LANGUAGE_RUNTIME "")
 else()
-    add_library(mdflibrary SHARED src/MdfExport.cpp)
+    add_library(mdflibrary SHARED
+            ../include/mdflibrary/MdfExport.h src/MdfExport.cpp)
     set_target_properties(mdflibrary PROPERTIES COMPILE_FLAGS "-fvisibility=hidden")
     set_target_properties(mdflibrary PROPERTIES LINK_FLAGS "-Wl,-rpath,'$ORIGIN'")
 
