@@ -72,7 +72,7 @@ jobs:
           # runVcpkgInstall: true
 
       - name: Run CMake consuming CMakePreset.json and run vcpkg to build dependencies
-        if: ${{ runner.os == 'Linux' or runner.os == 'macOS }}
+        if: ${{ runner.os == 'Linux' or runner.os == 'macOS' }}
         uses: lukka/run-cmake@v10
         with:
           # This is the default path to the CMakeLists.txt along side the
