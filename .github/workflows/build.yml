@@ -75,7 +75,7 @@ jobs:
       - name: Upload build
         uses: actions/upload-artifact@v3
         with:
-          name: mdflibs-${{runner.os}}-$${{runner.arch}}
+          name: mdflibs-${{runner.os}}-${{runner.arch}}
           path: install/msvc-multi-vcpkg/
   mac-and-ubuntu:
     name: run on unix
@@ -123,7 +123,7 @@ jobs:
           # using the vcpkg.cmake toolchain. The default is `false`.
           # runVcpkgInstall: true
 
-      - name: Run CMake consuming CMakePreset.json and run vcpkg to build dependencies
+      - name: Build
         uses: lukka/run-cmake@v10
         with:
           # This is the default path to the CMakeLists.txt along side the
@@ -142,7 +142,7 @@ jobs:
       - name: Upload build
         uses: actions/upload-artifact@v3
         with:
-          name: mdflibs-${{runner.os}}-$${{runner.arch}}
+          name: mdflibs-${{runner.os}}-${{runner.arch}}
           path: install/ninja-multi-vcpkg/
 
 ...
