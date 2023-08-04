@@ -76,7 +76,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: mdflibs-${{runner.os}}-$${{runner.arch}}
-          path: install/ninja-multi-vcpkg/
+          path: install/msvc-multi-vcpkg/
   mac-and-ubuntu:
     name: run on unix
     runs-on: ${{matrix.os}}
@@ -143,6 +143,6 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: mdflibs
-          path: install/
+          path: install/ninja-multi-vcpkg/
 
 ...
