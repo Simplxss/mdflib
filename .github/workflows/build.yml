@@ -72,18 +72,11 @@ jobs:
           # This is the name of the CMakePresets.json's configuration to build the project.
           buildPreset: 'msvc-multi-vcpkg'
 
-      - name: Install
-        uses: lukka/run-cmake@v10
-        with:
-          cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
-          configurePreset: 'msvc-multi-vcpkg'
-          buildPreset: 'msvc-multi-vcpkg'
-
       - name: Upload build
         uses: actions/upload-artifact@v3
         with:
-          name: mdflibs
-          path: install/
+          name: mdflibs-${{runner.os}}-$${{runner.arch}}
+          path: install/ninja-multi-vcpkg/
   mac-and-ubuntu:
     name: run on unix
     runs-on: ${{matrix.os}}
