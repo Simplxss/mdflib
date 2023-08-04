@@ -36,7 +36,7 @@
             "displayName": "Build ninja-multi-vcpkg",
             "configurePreset": "ninja-multi-vcpkg",
             "targets": [
-                "ALL_BUILD",
+                "all",
                 "install"
             ]
         },
