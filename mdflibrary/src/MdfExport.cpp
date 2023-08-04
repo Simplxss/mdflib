@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
+#pragma unmanaged
 #include <mdf/etag.h>
 #include <mdf/iattachment.h>
 #include <mdf/idatagroup.h>

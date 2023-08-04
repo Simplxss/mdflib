@@ -56,7 +56,7 @@ jobs:
           # using the vcpkg.cmake toolchain. The default is `false`.
           # runVcpkgInstall: true
 
-      - name: Run CMake consuming CMakePreset.json and run vcpkg to build dependencies
+      - name: Build
         uses: lukka/run-cmake@v10
         with:
           # This is the default path to the CMakeLists.txt along side the
@@ -72,12 +72,20 @@ jobs:
           # This is the name of the CMakePresets.json's configuration to build the project.
           buildPreset: 'msvc-multi-vcpkg'
 
+      - name: Install
+        uses: lukka/run-cmake@v10
+        with:
+          cmakeListsTxtPath: '${{ github.workspace }}/CMakeLists.txt'
+          configurePreset: 'msvc-multi-vcpkg'
+          buildPreset: 'msvc-multi-vcpkg'
+
       - name: Upload build
         uses: actions/upload-artifact@v3
         with:
           name: mdflibs
           path: install/
   mac-and-ubuntu:
+    name: run on unix
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
