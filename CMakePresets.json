@@ -15,7 +15,7 @@
         },
         {
             "name": "msvc-multi-vcpkg",
-            "displayName": "Msvc Multi-Config Configure Settings",
+            "displayName": "MSVC Multi-Config Configure Settings",
             "description": "Configure with vcpkg toolchain",
             "generator": "Visual Studio 17 2022",
             "toolset": "host=x64",
