@@ -94,9 +94,6 @@ target_link_libraries(mdf PRIVATE expat::expat)
 target_include_directories(
   mdf PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>)
 
-# set_target_properties(mdflib PROPERTIES COMPILE_FLAGS "-m32" LINK_FLAGS
-# "-m32")
-
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   set_target_properties(mdf PROPERTIES COMPILE_FLAGS "-fPIC")
 endif()

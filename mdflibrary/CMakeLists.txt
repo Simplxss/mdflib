@@ -32,9 +32,8 @@ else()
                                               "-fvisibility=hidden")
   set_target_properties(mdflibrary PROPERTIES LINK_FLAGS "-Wl,-rpath,'$ORIGIN'")
 
-  target_link_libraries(mdflibrary PRIVATE libc.a libm.a libstdc++.a)
-  # set_target_properties(mdflibrary PROPERTIES COMPILE_FLAGS "-m32" LINK_FLAGS
-  # "-m32")
+  target_link_libraries(mdflibrary PRIVATE -static-libgcc;-static-libstdc++)
+  set_target_properties(mdflibrary PROPERTIES COMPILE_FLAGS "-m32" LINK_FLAGS "-m32")
 endif()
 
 target_link_libraries(mdflibrary PRIVATE mdf)
