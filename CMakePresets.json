@@ -28,6 +28,20 @@
                 "CMAKE_BUILD_TYPE": "Release",
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}"
             }
+        },
+        {
+            "name": "msvc-multi-vcpkg",
+            "displayName": "MSVC Multi-Config Configure Settings",
+            "description": "Configure with vcpkg toolchain",
+            "generator": "Visual Studio 17 2022",
+            "toolset": "v143,version=14.36.32532,host=x64",
+            "architecture": "x64",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}"
+            }
         }
     ],
     "buildPresets": [
