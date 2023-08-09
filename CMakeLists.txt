@@ -17,7 +17,7 @@ cmake_minimum_required(VERSION 3.20)
 # set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
 option(MDF_BUILD_SHARED_LIB "Build shared library." ON)
-option(MDF_BUILD_SHARED_LIB_EXAMPLE "Build MdfLibrary Example." ON)
+option(MDF_BUILD_SHARED_LIB_EXAMPLE "Build MdfLibrary Example." OFF)
 option(MDF_BUILD_DOC "Build documentation. Requires Doxygen and Release mode." OFF)
 if(MDF_BUILD_DOC)
   list(APPEND VCPKG_MANIFEST_FEATURES "mdflibdoc")
