@@ -19,10 +19,8 @@ class MdfDataGroup {
   int64_t GetIndex() const { return MdfDataGroupGetIndex(group); }
   std::string GetDescription() const {
     std::string str;
-    size_t size = MdfDataGroupGetDescription(group, nullptr);
-    str.reserve(size + 1);
-    str.resize(size);
-    MdfDataGroupGetDescription(group, str.data());
+    str.reserve(MdfDataGroupGetDescription(group, nullptr) + 1);
+    str.resize(MdfDataGroupGetDescription(group, str.data()));;
     return str;
   }
   uint8_t GetRecordIdSize() const { return MdfDataGroupGetRecordIdSize(group); }
