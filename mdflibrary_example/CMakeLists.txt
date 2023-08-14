@@ -13,6 +13,7 @@ add_executable(mdflibraryexample ../include/mdflibrary/MdfExport.h src/test.cpp)
 if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   set_target_properties(mdflibraryexample PROPERTIES LINK_FLAGS
                                                   "-Wl,-rpath,'$ORIGIN'")
+  target_link_libraries(mdflibrary PRIVATE -static-libgcc;-static-libstdc++)
 endif()
 
 target_link_libraries(mdflibraryexample PRIVATE mdflibrary)
