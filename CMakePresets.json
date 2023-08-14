@@ -42,7 +42,7 @@
         },
         {
             "name": "msvc-multi-vcpkg-x64-workflow",
-            "displayName": "MSVC Multi-Config Configure Settings(x64)",
+            "displayName": "MSVC Multi-Config Configure Settings(x64) (For Workflow)",
             "description": "Configure with vcpkg toolchain",
             "generator": "Visual Studio 17 2022",
             "toolset": "host=x64",
@@ -57,7 +57,7 @@
         },
         {
             "name": "msvc-multi-vcpkg-x64_x86-workflow",
-            "displayName": "MSVC Multi-Config Configure Settings(x64_x86)",
+            "displayName": "MSVC Multi-Config Configure Settings(x64_x86) (For Workflow)",
             "description": "Configure with vcpkg toolchain",
             "generator": "Visual Studio 17 2022",
             "toolset": "host=x64",
@@ -131,9 +131,9 @@
         },
         {
             "name": "msvc-multi-vcpkg-x64-workflow-release",
-            "description": "Build msvc-multi-vcpkg-x64 Release",
-            "displayName": "Build msvc-multi-vcpkg-x64 Release",
-            "configurePreset": "msvc-multi-vcpkg-x64",
+            "description": "Build msvc-multi-vcpkg-x64 Release(For Workflow)",
+            "displayName": "Build msvc-multi-vcpkg-x64 Release(For Workflow)",
+            "configurePreset": "msvc-multi-vcpkg-x64-workflow",
             "configuration": "Release",
             "targets": [
                 "ALL_BUILD",
@@ -142,9 +142,9 @@
         },
         {
             "name": "msvc-multi-vcpkg-x64_x86-workflow-release",
-            "description": "Build msvc-multi-vcpkg-x64_x86 Release",
-            "displayName": "Build msvc-multi-vcpkg-x64_x86 Release",
-            "configurePreset": "msvc-multi-vcpkg-x64_x86",
+            "description": "Build msvc-multi-vcpkg-x64_x86 Release(For Workflow)",
+            "displayName": "Build msvc-multi-vcpkg-x64_x86 Release(For Workflow)",
+            "configurePreset": "msvc-multi-vcpkg-x64_x86-workflow",
             "configuration": "Release",
             "targets": [
                 "ALL_BUILD",
