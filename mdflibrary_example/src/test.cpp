@@ -207,11 +207,11 @@ void cpp_example() {
     Writer.InitMeasurement();
     Writer.StartMeasurement(100000000);
     std::cout << "Start measure" << std::endl;
-    for (size_t i = 0; i < 50; i++) {
-      channels[1].SetChannelValue(i * 2);
-      channels[2].SetChannelValue(i * 3);
-      channels[3].SetChannelValue(i * 4);
-      channels[4].SetChannelValue(i * 5);
+    for (size_t i = 0; i < 50000; i++) {
+      channels[1].SetChannelValue((uint64_t)i * 2);
+      channels[2].SetChannelValue((uint64_t)i * 3);
+      channels[3].SetChannelValue((uint64_t)i * 4);
+      channels[4].SetChannelValue((uint64_t)i * 5);
       Writer.SaveSample(cg, 100000000 + i * 1000000);
       std::cout << "Save sample " << i << std::endl;
     }
