@@ -20,19 +20,15 @@ class MdfChannel {
   int64_t GetIndex() const { return MdfChannelGetIndex(channel); }
   std::string GetName() const {
     std::string str;
-    size_t size = MdfChannelGetName(channel, nullptr);
-    str.reserve(size + 1);
-    str.resize(size);
-    MdfChannelGetName(channel, str.data());
+    str.reserve(MdfChannelGetName(channel, nullptr) + 1);
+    str.resize(MdfChannelGetName(channel, str.data()));;
     return str;
   }
   void SetName(const char* name) { MdfChannelSetName(channel, name); }
   std::string GetDisplayName() const {
     std::string str;
-    size_t size = MdfChannelGetDisplayName(channel, nullptr);
-    str.reserve(size + 1);
-    str.resize(size);
-    MdfChannelGetDisplayName(channel, str.data());
+    str.reserve(MdfChannelGetDisplayName(channel, nullptr) + 1);
+    str.resize(MdfChannelGetDisplayName(channel, str.data()));;
     return str;
   }
   void SetDisplayName(const char* name) {
@@ -40,10 +36,8 @@ class MdfChannel {
   }
   std::string GetDescription() const {
     std::string str;
-    size_t size = MdfChannelGetDescription(channel, nullptr);
-    str.reserve(size + 1);
-    str.resize(size);
-    MdfChannelGetDescription(channel, str.data());
+    str.reserve(MdfChannelGetDescription(channel, nullptr) + 1);
+    str.resize(MdfChannelGetDescription(channel, str.data()));;
     return str;
   }
   void SetDescription(const char* desc) {
@@ -52,10 +46,8 @@ class MdfChannel {
   bool IsUnitUsed() { return MdfChannelIsUnitUsed(channel); }
   std::string GetUnit() const {
     std::string str;
-    size_t size = MdfChannelGetUnit(channel, nullptr);
-    str.reserve(size + 1);
-    str.resize(size);
-    MdfChannelGetUnit(channel, str.data());
+    str.reserve(MdfChannelGetUnit(channel, nullptr) + 1);
+    str.resize(MdfChannelGetUnit(channel, str.data()));;
     return str;
   }
   void SetUnit(const char* unit) { MdfChannelSetUnit(channel, unit); }
