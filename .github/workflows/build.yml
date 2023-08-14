@@ -16,17 +16,12 @@ env:
 
 jobs:
   windows:
-<<<<<<< HEAD
-    name: run on windows
-    runs-on: windows-latest
-=======
     name: run on ${{matrix.os}}(${{matrix.arch}})
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
         os: [windows-latest]
         arch: [x64, x64_x86]
->>>>>>> main
     env:
       vcpkgCommitId: 0895a813036f4d189e2bdd1b62741744614347b4
     steps:
