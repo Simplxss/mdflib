@@ -45,14 +45,13 @@
             "displayName": "MSVC Multi-Config Configure Settings(x64) (For Workflow)",
             "description": "Configure with vcpkg toolchain",
             "generator": "Visual Studio 17 2022",
-            "toolset": "host=x64",
-            "architecture": "x64",
             "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
                 "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
                 "VCPKG_TARGET_TRIPLET": "x64-windows-static",
                 "CMAKE_INSTALL_PREFIX": "${sourceDir}/install/${presetName}",
-                "CMAKE_CXX_COMPILER": "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Tools/MSVC/14.36.32532/bin/Hostx64/x64/cl.exe"
+                "CMAKE_CXX_COMPILER": "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Tools/MSVC/14.36.32532/bin/Hostx64/x64/cl.exe",
+                "CMAKE_C_COMPILER": "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Tools/MSVC/14.36.32532/bin/Hostx64/x64/cl.exe"
             }
         },
         {
