@@ -3,11 +3,8 @@
 cmake_minimum_required(VERSION 3.20)
 
 option(MDF_BUILD_SHARED_LIB "Build shared library." ON)
-option(MDF_BUILD_SHARED_LIB_EXAMPLE "Build MdfLibrary Example." OFF)
+option(MDF_BUILD_SHARED_LIB_EXAMPLE "Build MdfLibrary Example." ON)
 option(MDF_BUILD_DOC "Build documentation. Requires Doxygen and Release mode." OFF)
-if(MDF_BUILD_DOC)
-  list(APPEND VCPKG_MANIFEST_FEATURES "mdflibdoc")
-endif()
 option(MDF_BUILD_TOOL "Build tools like the MDF Viewer. Requires WxWidgets." OFF)
 if(MDF_BUILD_TOOL)
   list(APPEND VCPKG_MANIFEST_FEATURES "mdfviewer")
@@ -22,6 +19,9 @@ project(
   VERSION 2.0
   DESCRIPTION "Interface against MDF 3/4 files"
   LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_DEBUG_POSTFIX d)
 
 add_subdirectory(mdflib)
 
@@ -44,14 +44,14 @@ endif()
 if((CMAKE_BUILD_TYPE MATCHES "^[Rr]elease") AND MDF_BUILD_DOC)
   include("script/doxygen.cmake")
   if(DOXYGEN_FOUND)
-  set(DOXYGEN_RECURSIVE NO)
-  set(DOXYGEN_REPEAT_BRIEF NO)
-  set(DOXYGEN_PROJECT_NAME "MDFLib")
-  set(DOXYGEN_HTML_EXTRA_STYLESHEET doxygen/utillib.css)
-  set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/docs/manual)
-  doxygen_add_docs(
-    doc_libmdf ALL include/mdf doxygen
-    COMMENT "MDF Library generating API documentation with Doxygen")
+    set(DOXYGEN_RECURSIVE NO)
+    set(DOXYGEN_REPEAT_BRIEF NO)
+    set(DOXYGEN_PROJECT_NAME "MDFLib")
+    set(DOXYGEN_HTML_EXTRA_STYLESHEET doxygen/utillib.css)
+    set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/docs/manual)
+    doxygen_add_docs(
+      doc_libmdf ALL include/mdf doxygen
+      COMMENT "MDF Library generating API documentation with Doxygen")
   endif()
 endif()
 

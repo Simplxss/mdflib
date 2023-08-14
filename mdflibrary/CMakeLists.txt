@@ -3,7 +3,7 @@
 
 if (MSVC)
     add_library(mdflibrary SHARED
-            ../include/mdflibrary/MdfExport.h src/MdfExport.cpp
+            src/MdfExport.cpp
             src/AssemblyInfo.cpp
             src/MdfAttachment.cpp src/MdfAttachment.h
             src/MdfChannel.cpp src/MdfChannel.h
@@ -26,14 +26,7 @@ if (MSVC)
   set_target_properties(mdflibrary PROPERTIES COMMON_LANGUAGE_RUNTIME "")
 
 else()
-  add_library(mdflibrary SHARED ../include/mdflibrary/MdfExport.h
-                                src/MdfExport.cpp)
-  set_target_properties(mdflibrary PROPERTIES COMPILE_FLAGS
-                                              "-fvisibility=hidden")
-  set_target_properties(mdflibrary PROPERTIES LINK_FLAGS "-Wl,-rpath,'$ORIGIN'")
-
-  # set_target_properties(mdflibrary PROPERTIES COMPILE_FLAGS "-m32" LINK_FLAGS
-  # "-m32")
+  add_library(mdflibrary SHARED src/MdfExport.cpp)
 endif()
 
 target_link_libraries(mdflibrary PRIVATE mdf)
@@ -41,7 +34,23 @@ target_link_libraries(mdflibrary PRIVATE mdf)
 target_include_directories(
   mdflibrary PUBLIC $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>)
 
-set(MDFLIBRARY_PUBLIC_HEADERS ../include/mdflibrary/MdfExport.h)
+set(MDFLIBRARY_PUBLIC_HEADERS 
+            ../include/mdflibrary/MdfExport.h
+            ../include/mdflibrary/MdfAttachment.h
+            ../include/mdflibrary/MdfChannel.h
+            ../include/mdflibrary/MdfChannelConversion.h
+            ../include/mdflibrary/MdfChannelGroup.h
+            ../include/mdflibrary/MdfChannelObserver.h
+            ../include/mdflibrary/MdfDataGroup.h
+            ../include/mdflibrary/MdfETag.h
+            ../include/mdflibrary/MdfEvent.h
+            ../include/mdflibrary/MdfFile.h
+            ../include/mdflibrary/MdfFileHistory.h
+            ../include/mdflibrary/MdfHeader.h
+            ../include/mdflibrary/MdfMetaData.h
+            ../include/mdflibrary/MdfReader.h
+            ../include/mdflibrary/MdfSourceInformation.h
+            ../include/mdflibrary/MdfWriter.h)
 set_target_properties(mdflibrary PROPERTIES PUBLIC_HEADER
                                             "${MDFLIBRARY_PUBLIC_HEADERS}")
 get_target_property(PH1 mdflibrary PUBLIC_HEADER)
