@@ -28,7 +28,7 @@ if (MSVC)
 else()
   add_library(mdflibrary SHARED src/MdfExport.cpp)
 
-  target_link_libraries(mdflibrary PRIVATE -static-libgcc;-static-libstdc++)
+  target_link_libraries(mdflibrary PRIVATE -static-libgcc;-static-libstdc++;-lpthread)
   # set_target_properties(mdflibrary PROPERTIES COMPILE_FLAGS "-m32" LINK_FLAGS "-m32")
 endif()
 
