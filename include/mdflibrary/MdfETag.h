@@ -1,5 +1,10 @@
+/*
+ * Copyright 2023 Simplxs
+ * SPDX-License-Identifier: MIT
+ */
 #pragma once
 #include <string>
+#include <stdexcept>
 
 #include "MdfExport.h"
 
