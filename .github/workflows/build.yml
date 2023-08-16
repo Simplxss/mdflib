@@ -16,8 +16,8 @@ env:
 
 jobs:
   windows:
-    name: run on ${{matrix.os}}(${{matrix.arch}})
-    runs-on: ${{matrix.os}}
+    name: run on ${{ matrix.os }}(${{ matrix.arch }})
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [windows-latest]
@@ -79,11 +79,11 @@ jobs:
       - name: Upload build
         uses: actions/upload-artifact@v3
         with:
-          name: mdflibs-${{runner.os}}-${{runner.arch}}
+          name: mdflibs-${{ matrix.os }}-${{ matrix.arch }}
           path: install/msvc-multi-vcpkg-${{ matrix.arch }}/
   mac-and-ubuntu:
-    name: run on ${{matrix.os}}(${{matrix.arch}})
-    runs-on: ${{matrix.os}}
+    name: run on ${{ matrix.os }}(${{ matrix.arch }})
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, 
@@ -148,7 +148,7 @@ jobs:
       - name: Upload build
         uses: actions/upload-artifact@v3
         with:
-          name: mdflibs-${{runner.os}}-${{runner.arch}}
+          name: mdflibs-${{ runner.os }}-${{ runner.arch }}
           path: install/ninja-multi-vcpkg/
 
 ...
