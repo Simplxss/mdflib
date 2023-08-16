@@ -80,7 +80,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: mdflibs-${{runner.os}}-${{runner.arch}}
-          path: install/msvc-multi-vcpkg/
+          path: install/msvc-multi-vcpkg-${{ matrix.arch }}/
   mac-and-ubuntu:
     name: run on ${{matrix.os}}(${{matrix.arch}})
     runs-on: ${{matrix.os}}

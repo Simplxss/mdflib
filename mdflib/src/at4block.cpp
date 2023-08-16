@@ -63,7 +63,7 @@ std::string ConvertMd5Buffer(const std::vector<uint8_t>& buffer) {
 
 bool FileToBuffer(const std::string& filename, mdf::ByteArray& dest) {
   try {
-    path fullname(filename);
+    path fullname = u8path(filename);
     const auto size = file_size(fullname);
     if (size > 0) {
       dest.resize(size, 0);
@@ -114,8 +114,9 @@ void At4Block::GetBlockProperty(BlockPropertyList& dest) const {
   std::string name;
   if (Link(kIndexFilename) > 0) {
     try {
-      std::filesystem::path p(filename_);
-      name = p.filename().string();
+      std::filesystem::path p = std::filesystem::u8path(filename_);
+      const auto& u8str = p.filename().u8string();
+      name = std::string(u8str.begin(), u8str.end());
     } catch (const std::exception&) {
       name = "<invalid>";
     }
@@ -163,7 +164,7 @@ size_t At4Block::Write(std::FILE* file) {
   }
   ByteArray data_buffer;
   try {
-    path filename(filename_);
+    path filename = u8path(filename_);
     if (!std::filesystem::exists(filename)) {
       MDF_ERROR() << "Attachment File doesn't exist. File: " << filename_;
       return 0;
@@ -231,7 +232,8 @@ void At4Block::ReadData(std::FILE* file, const std::string& dest_file) const {
   }
   SetFilePosition(file, data_position_);
   if (IsEmbedded()) {
-    auto* dest = fopen(dest_file.c_str(), "wb");
+    FILE* dest = nullptr;
+    Platform::fileopen(&dest, dest_file.c_str(), "wb");
     if (dest == nullptr) {
       throw std::ios_base::failure("Failed to open the destination file");
     }
@@ -242,8 +244,8 @@ void At4Block::ReadData(std::FILE* file, const std::string& dest_file) const {
     }
   } else {
     // Need to copy the source file
-    std::filesystem::path s(filename_);
-    std::filesystem::path d(dest_file);
+    std::filesystem::path s = std::filesystem::u8path(filename_);
+    std::filesystem::path d = std::filesystem::u8path(dest_file);
     if (s != d) {
       std::filesystem::copy_file(
           s, d, std::filesystem::copy_options::overwrite_existing);

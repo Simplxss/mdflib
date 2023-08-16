@@ -16,15 +16,25 @@ cmake_minimum_required(VERSION 3.20)
 # set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 # set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
-option(MDF_BUILD_SHARED_LIB "Build shared library." ON)
+if("${CMAKE_TOOLCHAIN_FILE}" STREQUAL "")
+  set(VCPKG OFF)
+else()
+  set(VCPKG ON)
+endif()
+
+option(MDF_BUILD_SHARED_LIB "Build shared library." OFF)
 option(MDF_BUILD_SHARED_LIB_EXAMPLE "Build MdfLibrary Example." OFF)
 option(MDF_BUILD_DOC "Build documentation. Requires Doxygen and Release mode." OFF)
 option(MDF_BUILD_TOOL "Build tools like the MDF Viewer. Requires WxWidgets." OFF)
-if(MDF_BUILD_TOOL)
+if(MDF_BUILD_TOOL AND VCPKG)
+  # Boost & wxWidgets is not available for static linking
+  string(REPLACE "-static" "" VCPKG_TARGET_TRIPLET "${VCPKG_TARGET_TRIPLET}")
   list(APPEND VCPKG_MANIFEST_FEATURES "mdfviewer")
 endif()
 option(MDF_BUILD_TEST "Build Google unit tests. Requires Google Test." OFF)
-if(MDF_BUILD_TEST)
+if(MDF_BUILD_TEST AND VCPKG)
+  # GTest is not available for static linking
+  string(REPLACE "-static" "" VCPKG_TARGET_TRIPLET "${VCPKG_TARGET_TRIPLET}")
   list(APPEND VCPKG_MANIFEST_FEATURES "mdflibtest")
 endif()
 
