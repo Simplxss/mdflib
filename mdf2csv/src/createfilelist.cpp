@@ -8,6 +8,8 @@
 #include <sstream>
 #include <cctype>
 #include <array>
+#include <mdf/ichannelgroup.h>
+#include <mdf/idatagroup.h>
 #include <mdf/mdfreader.h>
 #include <mdf/mdflogstream.h>
 #include "csvwriter.h"
